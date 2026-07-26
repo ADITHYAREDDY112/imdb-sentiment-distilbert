@@ -113,18 +113,18 @@ Example output:
 
 ## Results
 
-After training, `train.py` writes the measured results to `results/metrics.json`. Update this table with your run values before publishing the repository.
+The following results were generated with `distilbert-base-uncased` using
+2,000 training samples, 500 validation samples, 1,000 test samples, 1 epoch,
+and a batch size of 8. The raw metrics are saved in `results/metrics.json`.
 
 | Model | Accuracy | Precision | Recall | F1 |
 | --- | ---: | ---: | ---: | ---: |
-| Pretrained DistilBERT + untrained classifier head | See `results/metrics.json` | See `results/metrics.json` | See `results/metrics.json` | See `results/metrics.json` |
-| Fine-tuned DistilBERT | See `results/metrics.json` | See `results/metrics.json` | See `results/metrics.json` | See `results/metrics.json` |
+| Pretrained DistilBERT + untrained classifier head | 0.408 | 0.410 | 0.484 | 0.444 |
+| Fine-tuned DistilBERT | 0.865 | 0.864 | 0.859 | 0.861 |
 
 The baseline uses the same pretrained DistilBERT encoder before task fine-tuning. Because the sequence-classification head has not learned IMDb labels yet, it should perform near chance; fine-tuning should provide the major gain.
 
 ## Confusion Matrix
-
-After running training or evaluation, the confusion matrix will be saved here:
 
 ![Confusion matrix](results/confusion_matrix.png)
 
