@@ -16,7 +16,4 @@ wandb/
 .cache/
 .pytest_cache/
 
-results/*.png
-results/*.json
-results/*.csv
 !results/.gitkeep
