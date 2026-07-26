@@ -79,7 +79,7 @@ def select_subset(dataset, sample_count: int, seed: int):
 
 
 def load_imdb_splits(args: argparse.Namespace) -> DatasetDict:
-    imdb = load_dataset("imdb")
+    imdb = load_dataset("stanfordnlp/imdb")
     train_validation = imdb["train"].train_test_split(test_size=0.2, seed=args.seed)
 
     return DatasetDict(
@@ -214,7 +214,7 @@ def main() -> None:
             model=baseline_model,
             args=training_args,
             eval_dataset=tokenized_dataset["test"],
-            tokenizer=tokenizer,
+            processing_class=tokenizer,
             data_collator=data_collator,
             compute_metrics=compute_metrics,
         )
@@ -235,7 +235,7 @@ def main() -> None:
         args=training_args,
         train_dataset=tokenized_dataset["train"],
         eval_dataset=tokenized_dataset["validation"],
-        tokenizer=tokenizer,
+        processing_class=tokenizer,
         data_collator=data_collator,
         compute_metrics=compute_metrics,
     )

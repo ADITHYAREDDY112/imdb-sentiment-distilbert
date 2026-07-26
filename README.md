@@ -33,7 +33,8 @@ DistilBERT is a smaller, faster distilled version of BERT. A classification head
 |-- requirements.txt
 |-- README.md
 `-- results/
-    `-- .gitkeep
+    |-- metrics.json
+    `-- confusion_matrix.png
 ```
 
 Generated artifacts:
@@ -49,6 +50,13 @@ Generated artifacts:
 python -m venv .venv
 source .venv/bin/activate  # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
+```
+
+If PowerShell blocks activation on Windows, run the virtual environment's
+Python directly:
+
+```powershell
+.\.venv\Scripts\python.exe train.py --help
 ```
 
 ## Train
@@ -68,6 +76,17 @@ Use the full IMDb dataset by passing `-1` for sample counts:
 
 ```bash
 python train.py --train-samples -1 --eval-samples -1 --test-samples -1 --epochs 3
+```
+
+Reproduce the committed results:
+
+```bash
+python train.py \
+  --train-samples 2000 \
+  --eval-samples 500 \
+  --test-samples 1000 \
+  --epochs 1 \
+  --batch-size 8
 ```
 
 The training script:
@@ -113,7 +132,7 @@ Example output:
 
 ## Results
 
-The following results were generated with `distilbert-base-uncased` using
+The committed results were generated with `distilbert-base-uncased` using
 2,000 training samples, 500 validation samples, 1,000 test samples, 1 epoch,
 and a batch size of 8. The raw metrics are saved in `results/metrics.json`.
 

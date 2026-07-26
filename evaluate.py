@@ -128,7 +128,7 @@ def main() -> None:
     tokenizer = AutoTokenizer.from_pretrained(model_dir)
     model = AutoModelForSequenceClassification.from_pretrained(model_dir)
 
-    raw_test = load_dataset("imdb", split="test")
+    raw_test = load_dataset("stanfordnlp/imdb", split="test")
     raw_test = select_subset(raw_test, args.test_samples, args.seed)
 
     def tokenize_batch(batch):
@@ -145,7 +145,7 @@ def main() -> None:
             seed=args.seed,
         ),
         eval_dataset=tokenized_test,
-        tokenizer=tokenizer,
+        processing_class=tokenizer,
         data_collator=DataCollatorWithPadding(tokenizer=tokenizer),
         compute_metrics=build_compute_metrics(),
     )
