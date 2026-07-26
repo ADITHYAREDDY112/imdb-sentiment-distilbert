@@ -124,9 +124,9 @@ The baseline uses the same pretrained DistilBERT encoder before task fine-tuning
 
 ## Confusion Matrix
 
-After running training or evaluation, the confusion matrix will be saved here:
+After running training or evaluation, the confusion matrix image is saved to `results/confusion_matrix.png`.
 
-![Confusion matrix](results/confusion_matrix.png)
+> **Note:** The confusion matrix is generated at runtime and is not tracked in this repository. Run `train.py` or `evaluate.py` to produce it locally.
 
 ## Tech Stack
 
